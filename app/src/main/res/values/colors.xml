@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Core palette -->
+    <color name="bg_dark">#0F1923</color>
+    <color name="bg_card">#1A2733</color>
+    <color name="bg_surface">#243447</color>
+
+    <color name="ink">#E8ECF1</color>
+    <color name="muted_ink">#8899AA</color>
+    <color name="surface">#F5F7FB</color>
+    <color name="surface_card">#1A2733</color>
+    <color name="line">#2E4057</color>
+
+    <!-- Accent colors -->
+    <color name="navy">#172A46</color>
+    <color name="blue">#3B82F6</color>
+    <color name="blue_soft">#1E3A5F</color>
+    <color name="green">#22C55E</color>
+    <color name="green_soft">#163B2B</color>
+    <color name="amber">#F59E0B</color>
+    <color name="amber_soft">#3D2E0A</color>
+    <color name="red">#EF4444</color>
+    <color name="red_soft">#3D1515</color>
+    <color name="purple">#A855F7</color>
+    <color name="purple_soft">#2D1B4E</color>
+    <color name="orange">#F97316</color>
+    <color name="cyan">#06B6D4</color>
+
+    <!-- Button colors -->
+    <color name="btn_brute">#1E40AF</color>
+    <color name="btn_heuristic">#7C3AED</color>
+    <color name="btn_play">#059669</color>
+    <color name="btn_danger">#DC2626</color>
+    <color name="btn_neutral">#374151</color>
+
+    <!-- Maze colors -->
+    <color name="maze_wall">#1E293B</color>
+    <color name="maze_open">#F8FAFC</color>
+    <color name="maze_start">#22C55E</color>
+    <color name="maze_end">#EF4444</color>
+    <color name="maze_path">#3B82F6</color>
+    <color name="maze_explored">#FBBF24</color>
+    <color name="maze_player">#F97316</color>
+    <color name="maze_user_path">#A855F7</color>
+
+    <!-- Dialog -->
+    <color name="dialog_bg">#1A2733</color>
+    <color name="dialog_overlay">#CC000000</color>
+    <color name="accent_glow">#3B82F6</color>
+</resources>

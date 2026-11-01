@@ -1,0 +1,39 @@
+unit: maze_master_screen
+bindings:
+  - type: route-declaration
+    name: "MAIN/LAUNCHER intent filter"
+    source_loc: app/src/main/AndroidManifest.xml:18
+    target: "com.example.myapplication.MainActivity"
+    must_appear_in_target: true
+    notes: "The activity is the exported Android launcher entry point."
+  - type: convention
+    name: "AppCompatActivity.onCreate(Bundle)"
+    source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:61
+    target: "MainActivity.onCreate"
+    must_appear_in_target: true
+    notes: "Inflates activity_main and binds all controls with findViewById."
+  - type: convention
+    name: "Custom view XML class"
+    source_loc: app/src/main/res/layout/activity_main.xml:44
+    target: "com.example.myapplication.MazeView"
+    must_appear_in_target: true
+    notes: "Layout instantiates the custom View used to render maze cells."
+runtime_config:
+  - key: "compileSdk"
+    source_loc: app/build.gradle:7
+    source: code
+    default_value: "37"
+    must_appear_in_target: true
+    notes: "Android API used to compile the module."
+  - key: "minSdk"
+    source_loc: app/build.gradle:13
+    source: code
+    default_value: "24"
+    must_appear_in_target: true
+    notes: "Minimum supported Android API."
+  - key: "targetSdk"
+    source_loc: app/build.gradle:14
+    source: code
+    default_value: "37"
+    must_appear_in_target: true
+    notes: "Target Android API behavior level."

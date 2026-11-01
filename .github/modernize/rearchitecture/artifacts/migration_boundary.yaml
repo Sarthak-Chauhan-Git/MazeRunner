@@ -1,0 +1,22 @@
+user_intent:
+  raw_request: "Analyze this project."
+  inferred_acceptance:
+    - "Produce source-anchored architecture analysis artifacts."
+    - "Describe the existing project structure and stack without changing application behavior."
+  cleanup_required: false
+strategy: minimal_runtime
+runtime_reachable:
+  - app/src/main/AndroidManifest.xml
+  - app/src/main/java/com/example/myapplication/MainActivity.java
+  - app/src/main/java/com/example/myapplication/MazeView.java
+  - app/src/main/res/layout/activity_main.xml
+must_rewrite: []
+copy_as_is:
+  - app/src/main/AndroidManifest.xml
+  - app/src/main/java/com/example/myapplication/MainActivity.java
+  - app/src/main/java/com/example/myapplication/MazeView.java
+  - app/src/main/res/layout/activity_main.xml
+legacy_allowed_to_remain: []
+defer_cleanup: []
+full_rewrite_reason: null
+implementation_rule: "Analysis produced no implementation scope. Do not infer rewrite work from source anchors."

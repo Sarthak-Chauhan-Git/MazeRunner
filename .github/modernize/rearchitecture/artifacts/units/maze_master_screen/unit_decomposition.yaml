@@ -1,0 +1,21 @@
+unit: maze_master_screen
+commit: false
+candidate_splits:
+  - id: app/src/main/java/com/example/myapplication/MainActivity.java:102-168
+    drivers: [concern_split, data_ownership_split]
+    rationale: "Maze generation owns grid construction, level-specific opening rules, and level-label presentation; separating it would isolate deterministic maze state from screen orchestration."
+    source_slice:
+      file: app/src/main/java/com/example/myapplication/MainActivity.java
+      lines: [102, 168]
+  - id: app/src/main/java/com/example/myapplication/MainActivity.java:198-343
+    drivers: [concern_split, execution_model_split]
+    rationale: "Bounded brute-force DFS, path collection, shortest-path selection, and path navigation form a distinct algorithm and visualization concern inside the activity."
+    source_slice:
+      file: app/src/main/java/com/example/myapplication/MainActivity.java
+      lines: [198, 343]
+  - id: app/src/main/java/com/example/myapplication/MainActivity.java:355-479
+    drivers: [concern_split, execution_model_split]
+    rationale: "Greedy best-first search and its trace/statistics update have a separate algorithmic lifecycle from maze generation and brute-force path browsing."
+    source_slice:
+      file: app/src/main/java/com/example/myapplication/MainActivity.java
+      lines: [355, 479]

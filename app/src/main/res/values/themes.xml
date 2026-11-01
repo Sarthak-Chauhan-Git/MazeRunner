@@ -1,0 +1,68 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryContainer">@color/blue_soft</item>
+        <item name="colorSecondary">@color/purple</item>
+        <item name="colorSecondaryContainer">@color/purple_soft</item>
+        <item name="android:colorBackground">@color/bg_dark</item>
+        <item name="colorSurface">@color/bg_dark</item>
+        <item name="colorSurfaceVariant">@color/bg_card</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorOnSurfaceVariant">@color/muted_ink</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+    <!-- Button styles -->
+    <style name="Widget.App.Button.Brute" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/btn_brute</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="Widget.App.Button.Heuristic" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/btn_heuristic</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="Widget.App.Button.Play" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/btn_play</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="Widget.App.Button.Neutral" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="strokeColor">@color/line</item>
+        <item name="android:textColor">@color/muted_ink</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- Story dialog -->
+    <style name="StoryDialog" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

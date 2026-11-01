@@ -1,0 +1,23 @@
+units:
+  - name: maze_master_screen
+    trigger: page
+    trigger_detail: "Android launcher activity com.example.myapplication.MainActivity"
+    source_anchors:
+      - path: app/src/main/AndroidManifest.xml
+        line: 15
+      - path: app/src/main/java/com/example/myapplication/MainActivity.java
+        line: 61
+      - path: app/src/main/res/layout/activity_main.xml
+        line: 1
+      - path: app/src/main/java/com/example/myapplication/MazeView.java
+        line: 11
+    exported_signature: []
+    dynamic_entrypoints:
+      - target: com.example.myapplication.MainActivity
+        mechanism: xml-config
+        source_loc: app/src/main/AndroidManifest.xml:15
+      - target: com.example.myapplication.MazeView
+        mechanism: convention
+        source_loc: app/src/main/res/layout/activity_main.xml:44
+    depends_on: []
+    shared_refs: []

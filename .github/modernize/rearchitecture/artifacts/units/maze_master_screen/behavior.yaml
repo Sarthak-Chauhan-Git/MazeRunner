@@ -1,0 +1,45 @@
+unit: maze_master_screen
+side_effects:
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:159
+    effect: "Copies the generated 10x10 maze into MazeView and redraws the custom canvas."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:477
+    effect: "Publishes algorithm results, timings, path lengths, and comparison text in tvStats."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MazeView.java:32
+    effect: "Clears explored and selected-path overlays and invalidates the custom view."
+    must_preserve: true
+branches:
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:120
+    condition: "level is 1, 2, or 3"
+    behavior: "Uses level-specific opening probability and deterministic level seed, then labels the level EASY, MEDIUM, or HARD."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:265
+    condition: "maze cell is outside the 10x10 grid, a wall, already visited, or the path/node limits are reached"
+    behavior: "Stops the DFS branch without adding a path."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:218
+    condition: "brute-force search finds no path"
+    behavior: "Shows 'No path found!' and does not display a selected path."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:420
+    condition: "greedy search reaches row 9, column 9"
+    behavior: "Reconstructs the route from parent arrays, reverses it to start-to-goal order, and displays it."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:475
+    condition: "both algorithm timings are available"
+    behavior: "Adds faster and shorter-route comparison rows to the stats output."
+    must_preserve: true
+error_paths:
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:317
+    trigger: "Previous or next path index is outside allPaths bounds."
+    outcome: "Returns without changing the displayed path."
+    contract: "No exception or UI mutation."
+    must_preserve: true
+  - source_loc: app/src/main/java/com/example/myapplication/MainActivity.java:218
+    trigger: "No complete path is collected by bounded DFS."
+    outcome: "Status text becomes 'No path found!' and no path navigation is enabled."
+    contract: "User-visible status text."
+    must_preserve: true
+concurrency:
+  model: sync
