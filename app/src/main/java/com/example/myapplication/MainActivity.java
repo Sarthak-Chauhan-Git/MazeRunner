@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setOnClickListener(v -> generateMaze());
 
         btnNext.setOnClickListener(v -> {
-            level = level == 3 ? 1 : level + 1;
+            level = level == 2 ? 1 : level + 1;
             generateMaze();
         });
 
@@ -215,53 +215,74 @@ public class MainActivity extends AppCompatActivity {
         maze = new int[N][N];
         boolean[][] safe = new boolean[N][N];
 
-        // Five guaranteed routes
-        int[] rows = {1, 3, 5, 7, 8};
+        if (level == 2) {
+            // Fixed trap: greedy best-first search takes 24 moves, while
+            // brute force finds the 18-move optimum.
+            String[] hardMaze = {
+                    "..###.#.#.",
+                    "..#.####.#",
+                    ".....#####",
+                    ".#.#.#.#..",
+                    "##........",
+                    ".#...#.#.#",
+                    ".##....#..",
+                    "..#...###.",
+                    "##..#..#..",
+                    ".########."
+            };
 
-        // Initially all cells are walls
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                maze[r][c] = 1;
-            }
-        }
-
-        // Create five guaranteed paths
-        for (int row : rows) {
-
-            for (int r = 0; r <= row; r++) {
-                safe[r][0] = true;
-            }
-
-            for (int c = 0; c < N; c++) {
-                safe[row][c] = true;
-            }
-
-            for (int r = row; r < N; r++) {
-                safe[r][N - 1] = true;
-            }
-        }
-
-        // Open guaranteed paths
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                if (safe[r][c]) {
-                    maze[r][c] = 0;
+            for (int r = 0; r < N; r++) {
+                for (int c = 0; c < N; c++) {
+                    maze[r][c] = hardMaze[r].charAt(c) == '#' ? 1 : 0;
                 }
             }
-        }
+        } else {
+            // Five guaranteed routes
+            int[] rows = {1, 3, 5, 7, 8};
 
-        // Different maze patterns for each level
-        Random levelRandom = new Random(level * 100);
+            // Initially all cells are walls
+            for (int r = 0; r < N; r++) {
+                for (int c = 0; c < N; c++) {
+                    maze[r][c] = 1;
+                }
+            }
 
-        double openingChance = level == 1 ? 0.08 :
-                level == 2 ? 0.18 : 0.08;
+            // Create five guaranteed paths
+            for (int row : rows) {
 
-        for (int r = 0; r < N; r++) {
-            for (int c = 1; c < N - 1; c++) {
+                for (int r = 0; r <= row; r++) {
+                    safe[r][0] = true;
+                }
 
-                if (!safe[r][c] &&
-                        levelRandom.nextDouble() < openingChance) {
-                    maze[r][c] = 0;
+                for (int c = 0; c < N; c++) {
+                    safe[row][c] = true;
+                }
+
+                for (int r = row; r < N; r++) {
+                    safe[r][N - 1] = true;
+                }
+            }
+
+            // Open guaranteed paths
+            for (int r = 0; r < N; r++) {
+                for (int c = 0; c < N; c++) {
+                    if (safe[r][c]) {
+                        maze[r][c] = 0;
+                    }
+                }
+            }
+
+            // Keep the easy maze deterministic so both scenarios are repeatable.
+            Random levelRandom = new Random(100);
+            double openingChance = 0.08;
+
+            for (int r = 0; r < N; r++) {
+                for (int c = 1; c < N - 1; c++) {
+
+                    if (!safe[r][c] &&
+                            levelRandom.nextDouble() < openingChance) {
+                        maze[r][c] = 0;
+                    }
                 }
             }
         }
@@ -269,8 +290,7 @@ public class MainActivity extends AppCompatActivity {
         resetDisplay();
         mazeView.setMaze(maze);
 
-        String levelLabel = level == 1 ? "EASY" :
-                level == 2 ? "MEDIUM" : "HARD";
+        String levelLabel = level == 1 ? "EASY" : "HARD";
         tvLevel.setText("LVL " + level + " · " + levelLabel);
 
         tvStatus.setText("Tap PLAY to start, or run a simulation");

@@ -64,7 +64,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="A virus is spreading through the city.\nThe cure is hidden at the end of the maze.\n\n🎮  Guide the runner to find it yourself\n⚡  Watch Brute Force explore every path\n🧠  See how Heuristic Search picks smarter\n\nCompare your instinct against the algorithms!"
+        android:text="A virus is spreading through the city.\nThe cure is hidden at the end of the maze.\n\n🎮  Guide the runner to find it yourself\n⚡  Watch Brute Force guarantee the shortest route\n🧠  See how a Heuristic can be fooled\n\nCompare your instinct against the algorithms!"
         android:textColor="@color/muted_ink"
         android:textSize="14sp" />
 
